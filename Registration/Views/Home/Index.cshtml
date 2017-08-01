@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles {
+    <link rel="stylesheet" type="text/css" href="~/Content/index.css">
+}
+
+@section scripts {
+    <script type="text/javascript" src="~/Scripts/index.js"></script>
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-login">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2>Register</h2>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form id="register-form" action="/Home/Register" method="post" role="form">
+                                <div class="form-group">
+                                    <input type="text" name="firstName" id="firstName" class="form-control" placeholder="First Name">
+                                    <span id="firstNameSpan" class="validationErrors"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Last Name">
+                                    <span id="lastNameSpan" class="validationErrors"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="address1" id="address1" class="form-control" placeholder="Address 1">
+                                    <span id="address1Span" class="validationErrors"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="address2" id="address2" class="form-control" placeholder="Address 2 (optional)">
+                                    <span id="address2Span" class="validationErrors"></span>
+                                </div>
+                                <div class="form-group">
+                                    <p>Do you live in the United States?</p>
+                                    <div class="btn-group" data-toggle="buttons">
+                                        <label class="btn btn-primary">
+                                            <input type="radio" name="country" value="yes"> Yes
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="radio" name="country" value="no"> No
+                                        </label>
+                                    </div>
+                                    <span id="countrySpan" class="validationErrors"></span>
+                                </div>
+                                <div class="form-group">
+                                    <select name="state" id="state" class="form-control">
+                                        <option value="">State</option>
+                                        @foreach (var item in ViewBag.StatesList)
+                                        {
+                                            <option value="@item.Abbreviations">@item.Name</option>
+                                        }
+                                    </select>
+                                    <span id="stateSpan" class="validationErrors"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="zipcode" id="zipcode" class="form-control" placeholder="Zipcode">
+                                    <span id="zipcodeSpan" class="validationErrors"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="city" id="city" class="form-control" placeholder="City">
+                                    <span id="citySpan" class="validationErrors"></span>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-sm-offset-3">
+                                            <input type="submit" name="register-submit" id="register-submit" class="form-control btn btn-register" value="Register">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
