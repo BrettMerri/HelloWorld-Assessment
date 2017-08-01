@@ -87,7 +87,7 @@ namespace Registration.Controllers
 
             try
             {
-                RegistrationEntities db = new RegistrationEntities();
+                BrettMerrifieldHelloWorldEntities db = new BrettMerrifieldHelloWorldEntities();
 
                 User newUser = new User()
                 {
@@ -122,7 +122,7 @@ namespace Registration.Controllers
 
         public ActionResult Admin()
         {
-            RegistrationEntities db = new RegistrationEntities();
+            BrettMerrifieldHelloWorldEntities db = new BrettMerrifieldHelloWorldEntities();
             List<User> userList = db.Users.OrderByDescending(x => x.DateTime).ToList();
             return View(userList);
         }
