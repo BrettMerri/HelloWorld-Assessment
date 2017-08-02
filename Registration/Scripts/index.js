@@ -83,7 +83,7 @@
 
         //Country
         if (country !== "yes") {
-            $("#countrySpan").text("You must live in the United States to register");
+            $("#countrySpan").text("You must live in the US to register");
             validationErrors++;
         }
 

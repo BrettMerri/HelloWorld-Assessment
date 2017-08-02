@@ -26,45 +26,68 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <form id="register-form" action="/Home/Register" method="post" role="form">
-                                <div class="form-group">
-                                    <input type="text" name="firstName" id="firstName" class="form-control" placeholder="First Name">
-                                    <span id="firstNameSpan" class="validationErrors"></span>
+                                <div class="form-group row">
+                                    <label for="firstName" class="col-xs-3 form-label">First Name</label>
+                                    <div class="col-xs-9">
+                                        <input type="text" name="firstName" id="firstName" class="form-control" placeholder="First Name">
+                                        <span id="firstNameSpan" class="validationErrors"></span>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Last Name">
-                                    <span id="lastNameSpan" class="validationErrors"></span>
+                                <div class="form-group row">
+                                    <label for="lastName" class="col-xs-3 form-label">Last Name</label>
+                                    <div class="col-xs-9">
+                                        <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Last Name">
+                                        <span id="lastNameSpan" class="validationErrors"></span>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" name="address1" id="address1" class="form-control" placeholder="Address 1">
-                                    <span id="address1Span" class="validationErrors"></span>
+                                <div class="form-group row">
+                                    <label for="address1" class="col-xs-3 form-label">Address 1</label>
+                                    <div class="col-xs-9">
+                                        <input type="text" name="address1" id="address1" class="form-control" placeholder="Address 1">
+                                        <span id="address1Span" class="validationErrors"></span>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" name="address2" id="address2" class="form-control" placeholder="Address 2 (optional)">
-                                    <span id="address2Span" class="validationErrors"></span>
+                                <div class="form-group row">
+                                    <label for="address2" class="col-xs-3 form-label">Address 2</label>
+                                    <div class="col-xs-9">
+                                        <input type="text" name="address2" id="address2" class="form-control" placeholder="Address 2 (optional)">
+                                        <span id="address2Span" class="validationErrors"></span>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <p>Do you live in the United States?</p>
-                                    <input type="radio" name="country" value="yes"> Yes
-                                    <input type="radio" name="country" value="no"> No
-                                    <span id="countrySpan" class="validationErrors"></span>
+                                <div class="form-group row">
+                                    <label for="country" class="col-xs-3 form-label">US Resident?</label>
+                                    <div class="col-xs-9 radio-buttons">
+                                        <input type="radio" name="country" value="yes"> Yes
+                                        <input type="radio" name="country" value="no"> No <br />
+                                        <span id="countrySpan" class="validationErrors"></span>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <select name="state" id="state" class="form-control">
-                                        <option value="">State</option>
-                                        @foreach (var item in ViewBag.StatesList)
-                                        {
-                                            <option value="@item.Abbreviations">@item.Name</option>
-                                        }
-                                    </select>
-                                    <span id="stateSpan" class="validationErrors"></span>
+                                <div class="form-group row">
+                                    <label for="state" class="col-xs-3 form-label">State</label>
+                                    <div class="col-xs-9">
+                                        <select name="state" id="state" class="form-control">
+                                            <option value="">State</option>
+                                            @foreach (var item in ViewBag.StatesList)
+                                            {
+                                                <option value="@item.Abbreviations">@item.Name</option>
+                                            }
+                                        </select>
+                                        <span id="stateSpan" class="validationErrors"></span>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" name="zipcode" id="zipcode" class="form-control" placeholder="Zipcode">
-                                    <span id="zipcodeSpan" class="validationErrors"></span>
+                                <div class="form-group row">
+                                    <label for="zipcode" class="col-xs-3 form-label">Zipcode</label>
+                                    <div class="col-xs-9">
+                                        <input type="text" name="zipcode" id="zipcode" class="form-control" placeholder="Zipcode">
+                                        <span id="zipcodeSpan" class="validationErrors"></span>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" name="city" id="city" class="form-control" placeholder="City">
-                                    <span id="citySpan" class="validationErrors"></span>
+                                <div class="form-group row">
+                                    <label for="city" class="col-xs-3 form-label">City</label>
+                                    <div class="col-xs-9">
+                                        <input type="text" name="city" id="city" class="form-control" placeholder="City">
+                                        <span id="citySpan" class="validationErrors"></span>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
