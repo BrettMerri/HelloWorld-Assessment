@@ -1,7 +1,7 @@
 ﻿$(document).ready(function() {
     $('#register-form').submit(function (e) {
         
-        clearAllSpans(); //Clears all the validation text before revalidating fields
+        clearValidationText(); //Clears all the validation text before revalidating fields
 
         var validationErrors = 0;
 
@@ -93,11 +93,12 @@
         return false; //This prevents the form from submitting
     });
 
-    function clearAllSpans()
+    function clearValidationText()
     {
         $("#firstNameSpan").text("");
         $("#lastNameSpan").text("");
-        $("#addressSpan").text("");
+        $("#address1Span").text("");
+        $("#address2Span").text("");
         $("#citySpan").text("");
         $("#stateSpan").text("");
         $("#zipcodeSpan").text("");
