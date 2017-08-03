@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Registration.Models;
+using System.Text.RegularExpressions;
 
 namespace Registration.Controllers
 {
@@ -23,9 +24,13 @@ namespace Registration.Controllers
         {
             List<string> statesList = StateArray.Abbreviations(); //Gets list of state abbreviations
 
+            //Matches all alphanumeric characters, spaces, periods, and dashes.
+            Regex alphanumeric = new Regex(@"^[\w .-]*$", RegexOptions.IgnoreCase);
+
             //First name
             if (string.IsNullOrWhiteSpace(firstName) ||
-                firstName.Length > 50)
+                firstName.Length > 50 ||
+                !alphanumeric.IsMatch(firstName))
             {
                 ViewBag.ErrorMessage = $"Invalid first name: {firstName}";
                 return View("Error");
@@ -33,7 +38,8 @@ namespace Registration.Controllers
 
             //Last name
             if (string.IsNullOrWhiteSpace(lastName) ||
-             lastName.Length > 50)
+                lastName.Length > 50 ||
+                !alphanumeric.IsMatch(lastName))
             {
                 ViewBag.ErrorMessage = $"Invalid last name: {lastName}";
                 return View("Error");
@@ -41,23 +47,28 @@ namespace Registration.Controllers
 
             //Address1
             if (string.IsNullOrWhiteSpace(address1) ||
-             address1.Length > 100)
+                address1.Length > 100 ||
+                !alphanumeric.IsMatch(address1))
             {
                 ViewBag.ErrorMessage = $"Invalid address1: {address1}";
                 return View("Error");
             }
 
-            //Address2
-            if (!string.IsNullOrWhiteSpace(address2) &&
-             address2.Length > 100)
+            //Address2 (optional)
+            if (address2.Length > 100 ||
+                !alphanumeric.IsMatch(address2))
             {
                 ViewBag.ErrorMessage = $"Invalid address2: {address2}";
                 return View("Error");
             }
+            //Set address2 to null if empty
+            if (string.IsNullOrWhiteSpace(address2))
+                address2 = null;
 
             //City
             if (string.IsNullOrWhiteSpace(city) ||
-            city.Length > 50)
+                city.Length > 50 ||
+                !alphanumeric.IsMatch(city))
             {
                 ViewBag.ErrorMessage = $"Invalid city: {city}";
                 return View("Error");
@@ -80,10 +91,6 @@ namespace Registration.Controllers
                 ViewBag.ErrorMessage = $"Invalid zipcode: {zipcode}";
                 return View("Error");
             }
-
-            //Set address2 to null if empty
-            if (string.IsNullOrWhiteSpace(address2))
-                address2 = null;
 
             try
             {
@@ -110,7 +117,6 @@ namespace Registration.Controllers
                 ViewBag.ErrorMessage = $"Error saving to database. {ex.ToString()}";
                 return View("Error");
             }
-            
 
             return RedirectToAction("Confirmation");
         }
